@@ -25,9 +25,7 @@ public class Main {
                 if (currentWord.trim().toUpperCase().equals("BEGIN")) {
                     currentBlockNumber++;
                     activeBlockStack.push(currentBlockNumber);
-                }
-
-                if (currentWord.trim().toUpperCase().equals("END")) {
+                } else if (currentWord.trim().toUpperCase().equals("END")) {
                     if (!activeBlockStack.isEmpty())
                         closedBlockStack.push(activeBlockStack.pop());
                 } else {
