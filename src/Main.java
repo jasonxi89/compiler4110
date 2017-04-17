@@ -28,21 +28,20 @@ public class Main {
                 }
 
                 if (currentWord.trim().toUpperCase().equals("END")) {
-                    //for the end, if the there is active block, go back the previous active block, otherwise error.
                     if (!activeBlockStack.isEmpty())
                         closedBlockStack.push(activeBlockStack.pop());
-                    else {
-                        SymbolTableEntry currentSymbol = new SymbolTableEntry(currentWord, activeBlockStack.peek());
-                        //Check whether this variable is declared in the current scope.
-                        if (!currentSymbol.equals(findInCurrent(currentSymbol))) {
-                            //Check whether this variable is declared in the open scope.
-                            String entryFound = findInAllOpen(currentWord);
-                            if (entryFound != null && !entryFound.isEmpty())
-                                System.out.println(currentWord + " is declared in other open scopes" + entryFound + ".");
-                            insertSymbol(currentSymbol);
-                        } else {
-                            System.out.println(currentWord + " is declared in the current scope #" + currentSymbol.getBlockNumber() + ".");
-                        }
+                } else {
+                    //Find in local Scope
+                    SymbolTableEntry currentSymbol = new SymbolTableEntry(currentWord, activeBlockStack.peek());
+                    //Check whether this variable is declared in the current scope.
+                    if (!currentSymbol.equals(findInCurrent(currentSymbol))) {
+                        //Check whether this variable is declared in the open scope.
+                        String entryFound = findInAllOpen(currentWord);
+                        if (entryFound != null && !entryFound.isEmpty())
+                            System.out.println(currentWord + " is declared in other open scopes" + entryFound + ".");
+                        insertSymbol(currentSymbol);
+                    } else {
+                        System.out.println(currentWord + " is declared in the current scope #" + currentSymbol.getBlockNumber() + ".");
                     }
                 }
             }
