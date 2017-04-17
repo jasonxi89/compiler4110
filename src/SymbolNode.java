@@ -37,3 +37,4 @@ public class SymbolNode extends SymbolTableEntry {
         return false;
     }
 }
+

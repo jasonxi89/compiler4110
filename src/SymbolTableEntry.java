@@ -8,8 +8,6 @@ public class SymbolTableEntry {
     public SymbolTableEntry() {
     }
 
-    ;
-
     public SymbolTableEntry(String identifier, int blockNumber) {
         this.setIdentifier(identifier);
         this.setBlockNumber(blockNumber);
@@ -17,12 +15,12 @@ public class SymbolTableEntry {
 
     public String getIdentifier() {
         //The source language is not case sensitive.
-        return this.identifier.toUpperCase();
+        return this.identifier;
     }
 
     public void setIdentifier(String identifier) {
         //The source language is not case sensitive.
-        this.identifier = identifier.toUpperCase();
+        this.identifier = identifier;
     }
 
     public int getBlockNumber() {
@@ -46,8 +44,6 @@ public class SymbolTableEntry {
         }
         return false;
     }
-
-
-
 }
+
 
