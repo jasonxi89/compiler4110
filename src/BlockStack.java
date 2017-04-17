@@ -21,7 +21,7 @@ public class BlockStack {
         return this.blocks.pop();
     }
 
-    public int push(int blockNumber) {
+    public void push(int blockNumber) {
         this.stackSize++;
         this.blocks.push(blockNumber);
     }
